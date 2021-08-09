@@ -29,8 +29,9 @@ const int resolution = 8;
 int dutyCycle = 0;
 
 // Set these to your desired credentials.
-const char *ssid = "LinuxAP";
-const char *password = "Utep123ti*";
+// This can be whatever you want just be sure to alter this
+const char *ssid = "";
+const char *password = "";
 
 WiFiServer server(80);
 
@@ -41,13 +42,16 @@ void setup() {
   ESP32PWM::allocateTimer(1);
   ESP32PWM::allocateTimer(2);
   ESP32PWM::allocateTimer(3);
-
+  
+  // Set the hertz
   servo1.setPeriodHertz(50);
   servo2.setPeriodHertz(50);
-
+  
+  
+  // Attach the pins
   servo1.attach(servoOne, 500, 2400);
   servo2.attach(servoTwo, 500, 2400);
-  
+  // Set the pins to output
   pinMode(in_1, OUTPUT);
   pinMode(in_2, OUTPUT);
   pinMode(in_3, OUTPUT);
@@ -56,7 +60,7 @@ void setup() {
   pinMode(en_2, OUTPUT);
   pinMode(eye, OUTPUT);
   
-
+  // Set the pwmchannel, frequency and resolution for the enable lines
   ledcSetup(pwmChannel, freq, resolution);
   ledcAttachPin(en_1, pwmChannel);
   ledcAttachPin(en_2, pwmChannel);
@@ -136,7 +140,7 @@ void loop() {
           currentLine += c;      // add it to the end of the currentLine
         }
 
-       
+        // Directions for the robot
         if (currentLine.endsWith("GET /forward")) {
           digitalWrite(in_1, HIGH);
           digitalWrite(in_2, LOW);
@@ -175,6 +179,7 @@ void loop() {
           digitalWrite(in_4, LOW);
          
           }
+        // PWM Control
          if (currentLine.endsWith("GET /T")) {
           ledcWrite(pwmChannel, 77);
           
@@ -186,12 +191,14 @@ void loop() {
         if (currentLine.endsWith("GET /F")) {
           ledcWrite(pwmChannel, 255);
           
-          }           
+          } 
+        // LED eye control
         if (currentLine.endsWith("GET /O")) {
           digitalWrite(eye, HIGH);               
         }
         if (currentLine.endsWith("GET /L")) {
-          digitalWrite(eye, LOW);                
+          digitalWrite(eye, LOW);  
+         // Servo control
         }
          if (currentLine.endsWith("GET /Z")) {
           servo1.write(0);
