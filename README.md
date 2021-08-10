@@ -11,8 +11,18 @@ To get started here is the hardware and software I used.
 ### Hardware
 
 * My robot Linus fitted with an ESP32. You can use any ESP32 including the ESP32 CAM.
-* Dupont connectors for the Servo arm, motors, LED eyes and the enable lines.
-* My Programming PC running Ubuntu 20.04 to run all the code.
+Materials used:
+1. Generic robot chassis
+2. CamJam Edukit 3 motors and Wheels
+3. L298N H bridge motor controller
+4. cardboard for Linus's face and servo arm
+5. 2 SG90 servo motors
+6. Dupont connectors
+7. breadboard for ESP32
+8. ESP32
+9. cable ties for wiring
+10. Power LED cables for Eyes including bezels
+11. 6V battery packs for motors and servos
 
 ### Software
 
