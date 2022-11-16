@@ -29,8 +29,8 @@ const int resolution = 8;
 int dutyCycle = 0;
 
 // Set these to your desired credentials.
-const char *ssid = "LinuxAP";
-const char *password = "Utep123ti*";
+const char *ssid = "YOURAP";
+const char *password = "PASSWORD";
 
 WiFiServer server(80);
 
